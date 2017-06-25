@@ -4,8 +4,9 @@
 const clock = (() => {
   let clockBreak = 5,
       session = 25,
-      clockTime = 25,
-      ticking = false
+      clockTime = 25 * 60,
+      ticking = false,
+      ticker = null
 
   const incBreak = () => {
     clockBreak++
@@ -18,26 +19,30 @@ const clock = (() => {
   const incSession = () => {
     if (!ticking) { 
       session++
-      clockTime = session
+      clockTime = session * 60
     }
   }
 
   const decSession = () => {
     if (!ticking) {
       session--
-      clockTime = session
+      clockTime = session * 60
     }
   }
 
   const pauseClock = () => {
     ticking = false
+    clearInterval(ticker)
   }
 
   const startClock = () => {
-    ticking = true
+    ticker = setInterval(() => { tick(); console.log(clockTime); }, 1000)
   }
 
-  const isTicking = () => ticking
+  const tick = () => {
+    ticking = true
+    clockTime -= 1
+  }
 
   return {
     incBreak: incBreak,
@@ -46,6 +51,5 @@ const clock = (() => {
     decSession: decSession,
     pauseClock: pauseClock,
     startClock: startClock,
-    isTicking: isTicking,
   }
 })()
