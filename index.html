@@ -4,9 +4,25 @@
   <meta charset="UTF-8">
   <title>Pomodoro Clock</title>
   <link rel="stylesheet" href="style.css">
-  <script src="script.js"></script>
 </head>
 <body>
-  
+  <div id="timeControl" class="clickable">
+    <div id="session">
+      <div id="incSession">+</div>
+      <p>Session</p>
+      <div id="decSession">-</div>
+      <div id="showSessionTime"></div>
+    </div>
+    <div id="break">
+      <div id="incBreak">+</div>
+      <p>Break</p>
+      <div id="decBreak">-</div>
+      <div id="showBreakTime"></div>
+    </div>
+  </div>
+  <div class="clickable" id="clock"></div>
+  <div id="showClockMode">Session Time!</div>
 </body>
+
+<script src="script.js"></script>
 </html>

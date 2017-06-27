@@ -1,0 +1,59 @@
+.clickable {
+  user-select: none;
+}
+
+.clickable:hover {
+  cursor: default;
+}
+
+#clock {
+  background-color: green;
+  color: white;
+  border-radius: 20px;
+  width: fit-content;
+  font: Helvetica;
+  font-weight: bold;
+  font-size: 194px;
+  padding: 10px;
+  display: block;
+  margin: 40px auto 0 auto;
+}
+
+#incSession,
+#decSession,
+#incBreak,
+#decBreak,
+p {
+  display: inline-block;
+}
+
+#session,
+#break {
+  display: inline-block;
+}
+
+#session {
+  margin-left: 400px;
+}
+
+#break {
+  float: right;
+  margin-right: 400px;
+}
+
+#showSessionTime,
+#showBreakTime {
+  text-align: center;
+  border-radius: 5px;
+  border: 1px solid black;
+}
+
+#timeControl {
+  font-size: 30px;
+}
+
+#showClockMode {
+  font-size: 90px;
+  text-align: center;
+  margin-top: 20px;
+}
