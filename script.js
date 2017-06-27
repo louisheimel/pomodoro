@@ -56,11 +56,13 @@ const clock = (() => {
   }
 
   const tick = () => {
+    var showClockMode = document.getElementById('showClockMode')
+    if (sessionMode) { showClockMode.innerHTML = 'Session time!' } 
+    else { showClockMode.innerHTML = 'Break time!' }
     if (sessionMode) {
       if (clockTime === 1) { 
         sessionMode = false
         clockTime = clockBreak * 60 
-        document.getElementById('showClockMode').innerHTML = 'Break time!'
       }
       else { 
         clockTime -= 1 
@@ -68,8 +70,7 @@ const clock = (() => {
     } else {
       if (clockTime === 1) {
         clockTime = session * 60;
-        sessionTime = true;
-        document.getElementById('showClockMode').innerHTML = 'Session time!'
+        sessionMode = true;
       } else {
         clockTime -= 1 
       }
@@ -80,6 +81,7 @@ const clock = (() => {
 
   const getBreakLength = () => clockBreak
   const getSessionLength = () => session
+  const setSessionMode = (isSession) => { sessionMode = isSession }
   const setClockTime = () => { document.getElementById('clock').innerHTML = clockFormat(clockTime) }
   const isTicking = () => ticking
   return {
@@ -94,6 +96,7 @@ const clock = (() => {
     getSessionLength: getSessionLength,
     setClockTime: setClockTime,
     isTicking: isTicking, 
+    setSessionMode: setSessionMode
   }
 })()
 
@@ -115,11 +118,13 @@ showBreakTime.innerHTML = clock.getBreakLength()
 showSessionTime.innerHTML = clock.getSessionLength()
 
 incSession.addEventListener('click', () => {
+  clock.setSessionMode(true)
   clock.incSession()
   showSessionTime.innerHTML = clock.getSessionLength()
 })
 
 decSession.addEventListener('click', () => {
+  clock.setSessionMode(true)
   clock.decSession()
   showSessionTime.innerHTML = clock.getSessionLength()
 })
