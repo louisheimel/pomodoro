@@ -58,13 +58,21 @@ const clock = (() => {
   const tick = () => {
     if (sessionMode) {
       if (clockTime === 1) { 
+        sessionMode = false
         clockTime = clockBreak * 60 
-        document.getElementById('showClockMode').innerHTML = 'Break Time!'
+        document.getElementById('showClockMode').innerHTML = 'Break time!'
       }
-      else { clockTime -= 1 }
+      else { 
+        clockTime -= 1 
+      }
     } else {
-      if (clockTime === 1) { clockTime = session * 60 }
-      document.getElementById('showClockMode').innerHTML = 'Session Time!'
+      if (clockTime === 1) {
+        clockTime = session * 60;
+        sessionTime = true;
+        document.getElementById('showClockMode').innerHTML = 'Session time!'
+      } else {
+        clockTime -= 1 
+      }
     }
   }
 
